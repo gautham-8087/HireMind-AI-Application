@@ -2,6 +2,7 @@ import { useState } from 'react';
 import EmptyState from '../components/EmptyState';
 import LoadingSpinner from '../components/LoadingSpinner';
 import PageHeader from '../components/PageHeader';
+import CopyButton from '../components/CopyButton';
 import { useAnalysis } from '../context/AnalysisContext';
 import { generateInterviewQuestions } from '../services/api';
 
@@ -74,7 +75,8 @@ const Interview = () => {
         <div className="space-y-4">
           {questions.map((q, i) => (
             <div key={i} className="card-hover animate-slide-up">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-lg bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-gray-700 dark:text-gray-300">
                   Q{i + 1}
                 </span>
@@ -92,6 +94,8 @@ const Interview = () => {
                     {q.difficulty}
                   </span>
                 )}
+                </div>
+                <CopyButton text={q.question} />
               </div>
               <p className="text-gray-800 dark:text-gray-200">{q.question}</p>
             </div>
