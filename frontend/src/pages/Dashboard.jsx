@@ -3,6 +3,7 @@ import ScoreRing from '../components/ScoreRing';
 import EmptyState from '../components/EmptyState';
 import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
+import { downloadAnalysisJson } from '../utils/export';
 
 const Dashboard = () => {
   const { analysis } = useAnalysis();
@@ -26,7 +27,15 @@ const Dashboard = () => {
         description={
           analysis.fileName ? `Analysis for ${analysis.fileName}` : 'Your resume compatibility overview'
         }
-      />
+      >
+        <button
+          type="button"
+          onClick={() => downloadAnalysisJson(analysis, analysis.fileName)}
+          className="btn-secondary shrink-0 text-sm"
+        >
+          Export JSON
+        </button>
+      </PageHeader>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="card flex flex-col items-center justify-center lg:col-span-1">
