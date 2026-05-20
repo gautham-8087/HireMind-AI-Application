@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import multer from 'multer';
 import connectDB, { isDbConnected } from './config/db.js';
+import { requestLogger } from './middleware/logger.js';
 import resumeRoutes from './routes/resumeRoutes.js';
 
 dotenv.config();
@@ -29,6 +30,7 @@ app.use(
   })
 );
 
+app.use(requestLogger);
 app.use(express.json({ limit: '10mb' }));
 
 app.get('/api/health', (req, res) => {
