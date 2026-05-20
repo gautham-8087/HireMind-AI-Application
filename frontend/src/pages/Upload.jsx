@@ -36,7 +36,7 @@ const Upload = () => {
         setError(data.message || 'Analysis failed');
       }
     } catch (err) {
-      setError(err.response?.data?.message || err.message || 'Failed to analyze resume');
+      setError(err.friendlyMessage || err.response?.data?.message || err.message || 'Failed to analyze resume');
     } finally {
       setLoading(false);
     }
