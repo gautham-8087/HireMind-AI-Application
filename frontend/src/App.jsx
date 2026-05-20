@@ -7,6 +7,7 @@ import Skills from './pages/Skills';
 import Suggestions from './pages/Suggestions';
 import Interview from './pages/Interview';
 import History from './pages/History';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/suggestions" element={<Suggestions />} />
         <Route path="/interview" element={<Interview />} />
         <Route path="/history" element={<History />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );
