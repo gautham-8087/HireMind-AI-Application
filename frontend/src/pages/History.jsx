@@ -14,7 +14,8 @@ const History = () => {
     const fetchHistory = async () => {
       try {
         const { data } = await getHistory();
-        if (data.success) setHistory(data.data);
+        if (data.success) setHistory(data.data || []);
+        if (data.dbAvailable === false) setError(null);
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to load history');
       } finally {
