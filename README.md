@@ -70,6 +70,8 @@ Runs at `http://localhost:5173`
 
 ## Deployment
 
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for step-by-step Vercel + Render setup.
+
 | Service | Platform | Root directory |
 |---------|----------|----------------|
 | Frontend | [Vercel](https://vercel.com) | `frontend` |
