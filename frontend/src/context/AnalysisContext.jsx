@@ -1,15 +1,23 @@
 import { createContext, useContext, useState } from 'react';
+import { loadAnalysisLocally, saveAnalysisLocally, clearAnalysisLocally } from '../utils/storage';
 
 const AnalysisContext = createContext();
 
 export const AnalysisProvider = ({ children }) => {
-  const [analysis, setAnalysis] = useState(null);
+  const [analysis, setAnalysisState] = useState(() => loadAnalysisLocally());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const setAnalysis = (data) => {
+    setAnalysisState(data);
+    if (data) saveAnalysisLocally(data);
+    else clearAnalysisLocally();
+  };
+
   const clearAnalysis = () => {
-    setAnalysis(null);
+    setAnalysisState(null);
     setError(null);
+    clearAnalysisLocally();
   };
 
   return (
