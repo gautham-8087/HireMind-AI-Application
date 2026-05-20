@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ScoreRing from '../components/ScoreRing';
 import EmptyState from '../components/EmptyState';
+import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
 
 const Dashboard = () => {
@@ -19,16 +20,13 @@ const Dashboard = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8">
-        <h1 className="section-title mb-2">ATS Score Dashboard</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          {analysis.fileName && (
-            <span>
-              Analysis for <strong>{analysis.fileName}</strong>
-            </span>
-          )}
-        </p>
-      </div>
+      <PageHeader
+        badge="Results"
+        title="ATS Score Dashboard"
+        description={
+          analysis.fileName ? `Analysis for ${analysis.fileName}` : 'Your resume compatibility overview'
+        }
+      />
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="card flex flex-col items-center justify-center lg:col-span-1">

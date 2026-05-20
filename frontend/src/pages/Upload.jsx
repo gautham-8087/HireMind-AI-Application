@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ResumeUpload from '../components/ResumeUpload';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PageHeader from '../components/PageHeader';
 import { IconDocument, IconShield, IconBolt } from '../components/Icons';
 import { useAnalysis } from '../context/AnalysisContext';
 import { fullAnalysis } from '../services/api';
@@ -43,13 +44,12 @@ const Upload = () => {
 
   return (
     <div className="mx-auto max-w-3xl animate-fade-in">
-      <div className="mb-10 text-center">
-        <span className="badge mb-4">Step 1</span>
-        <h1 className="section-title mb-3">Upload your resume</h1>
-        <p className="text-slate-600 dark:text-slate-400">
-          Drag and drop your PDF for instant, intelligent analysis
-        </p>
-      </div>
+      <PageHeader
+        centered
+        badge="Step 1"
+        title="Upload your resume"
+        description="Drag and drop your PDF for instant, intelligent analysis"
+      />
 
       {loading ? (
         <div className="card border-primary-200/50 dark:border-primary-800/50">
