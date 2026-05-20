@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useAnalysis } from '../context/AnalysisContext';
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -14,6 +15,7 @@ const navLinks = [
 
 const Navbar = () => {
   const { darkMode, toggleTheme } = useTheme();
+  const { analysis, clearAnalysis } = useAnalysis();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -46,6 +48,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          {analysis && (
+            <button
+              onClick={clearAnalysis}
+              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400 sm:inline-block"
+            >
+              Clear results
+            </button>
+          )}
           <Link to="/upload" className="btn-primary hidden py-2 text-sm sm:inline-flex">
             Get Started
           </Link>
