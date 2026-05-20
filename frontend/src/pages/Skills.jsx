@@ -1,4 +1,5 @@
 import EmptyState from '../components/EmptyState';
+import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
 
 const Skills = () => {
@@ -18,12 +19,11 @@ const Skills = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8">
-        <h1 className="section-title mb-2">Skill Analysis</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Skills detected in your resume and recommended additions
-        </p>
-      </div>
+      <PageHeader
+        badge="Insights"
+        title="Skill Analysis"
+        description="Skills detected in your resume and recommended additions"
+      />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="card">

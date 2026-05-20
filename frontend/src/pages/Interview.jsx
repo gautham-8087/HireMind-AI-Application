@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import EmptyState from '../components/EmptyState';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
 import { generateInterviewQuestions } from '../services/api';
 
@@ -49,17 +50,15 @@ const Interview = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="section-title mb-2">Interview Questions</h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Technical questions tailored to your resume skills
-          </p>
-        </div>
-        <button onClick={handleRegenerate} disabled={loading} className="btn-secondary">
-          Regenerate Questions
+      <PageHeader
+        badge="Interview prep"
+        title="Interview Questions"
+        description="Technical questions tailored to your resume skills"
+      >
+        <button onClick={handleRegenerate} disabled={loading} className="btn-secondary shrink-0">
+          Regenerate
         </button>
-      </div>
+      </PageHeader>
 
       {error && (
         <div className="mb-4 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400">

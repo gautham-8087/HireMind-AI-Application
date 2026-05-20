@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
+import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
 import { getHistory, getAnalysisById } from '../services/api';
 
@@ -46,12 +47,11 @@ const History = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8">
-        <h1 className="section-title mb-2">Analysis History</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Previously analyzed resumes stored in MongoDB
-        </p>
-      </div>
+      <PageHeader
+        badge="Archive"
+        title="Analysis History"
+        description="Previously analyzed resumes stored in MongoDB when connected"
+      />
 
       {error && (
         <div className="mb-4 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400">

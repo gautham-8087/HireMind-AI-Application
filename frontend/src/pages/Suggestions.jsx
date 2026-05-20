@@ -1,4 +1,5 @@
 import EmptyState from '../components/EmptyState';
+import PageHeader from '../components/PageHeader';
 import { useAnalysis } from '../context/AnalysisContext';
 
 const Suggestions = () => {
@@ -17,12 +18,11 @@ const Suggestions = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8">
-        <h1 className="section-title mb-2">AI Suggestions</h1>
-        <p className="text-gray-600 dark:text-gray-400">
-          Personalized recommendations to improve your resume
-        </p>
-      </div>
+      <PageHeader
+        badge="Recommendations"
+        title="AI Suggestions"
+        description="Personalized recommendations to improve your resume"
+      />
 
       <div className="space-y-4">
         {suggestions.map((suggestion, i) => (
