@@ -43,6 +43,10 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/resume', resumeRoutes);
 
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ success: false, message: 'API route not found' });
+});
+
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     if (err.code === 'LIMIT_FILE_SIZE') {
