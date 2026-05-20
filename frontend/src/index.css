@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-slate-800 dark:text-slate-100;
+  }
+}
+
+@layer components {
+  .page-bg {
+    @apply relative min-h-screen bg-slate-50 dark:bg-slate-950;
+  }
+
+  .page-bg::before {
+    content: '';
+    @apply pointer-events-none fixed inset-0 -z-10;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.12), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14, 165, 233, 0.08), transparent),
+      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(16, 185, 129, 0.06), transparent);
+  }
+
+  .dark .page-bg::before {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14, 165, 233, 0.05), transparent);
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm;
+    @apply dark:border-slate-700/80 dark:bg-slate-900/80 dark:shadow-lg;
+  }
+
+  .card-hover {
+    @apply rounded-2xl border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm;
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg;
+    @apply dark:border-slate-700/80 dark:bg-slate-900/80 dark:shadow-lg dark:hover:border-emerald-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold text-white shadow-md transition-all;
+    @apply bg-gradient-to-r from-emerald-600 to-emerald-500;
+    @apply hover:from-emerald-700 hover:to-emerald-600 hover:shadow-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-offset-slate-900;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/90 px-6 py-3 font-semibold text-slate-700 backdrop-blur transition-all;
+    @apply hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800;
+    @apply focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2;
+    @apply dark:border-slate-600 dark:bg-slate-800/90 dark:text-slate-200;
+    @apply dark:hover:border-emerald-700 dark:hover:bg-emerald-900/30 dark:focus:ring-offset-slate-900;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl;
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(to right, #10b981, #0ea5e9, #059669);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+    @apply border-emerald-200/60 bg-emerald-50/80 text-emerald-700;
+    @apply dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300;
+  }
+}
