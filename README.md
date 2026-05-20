@@ -85,6 +85,14 @@ Set environment variables in each platform dashboard. Never commit `.env` files.
 - `POST /api/resume/analyze/full` — Upload PDF + full analysis
 - `GET /api/resume/history` — Analysis history
 
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for release notes.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## License
 
 MIT
