@@ -1,7 +1,15 @@
+import { useEffect, useState } from 'react';
+
 const ScoreRing = ({ score, size = 160 }) => {
+  const [animatedScore, setAnimatedScore] = useState(0);
   const radius = (size - 16) / 2;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (score / 100) * circumference;
+  const offset = circumference - (animatedScore / 100) * circumference;
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimatedScore(score), 100);
+    return () => clearTimeout(timer);
+  }, [score]);
 
   const getColor = () => {
     if (score >= 80) return '#22c55e';
@@ -27,7 +35,7 @@ const ScoreRing = ({ score, size = 160 }) => {
           fill="none"
           stroke="currentColor"
           strokeWidth="8"
-          className="text-gray-200 dark:text-gray-700"
+          className="text-slate-200 dark:text-slate-700"
         />
         <circle
           cx={size / 2}
@@ -43,8 +51,8 @@ const ScoreRing = ({ score, size = 160 }) => {
         />
       </svg>
       <div className="absolute flex flex-col items-center">
-        <span className="text-3xl font-bold text-gray-900 dark:text-white">{score}</span>
-        <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{getLabel()}</span>
+        <span className="text-3xl font-bold text-slate-900 dark:text-white">{animatedScore}</span>
+        <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{getLabel()}</span>
       </div>
     </div>
   );
