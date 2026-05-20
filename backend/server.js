@@ -34,8 +34,10 @@ app.use(express.json({ limit: '10mb' }));
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Resume Analyzer API is running',
+    message: 'HireMind API is running',
+    version: '1.0.0',
     database: isDbConnected ? 'connected' : 'unavailable',
+    timestamp: new Date().toISOString(),
   });
 });
 
